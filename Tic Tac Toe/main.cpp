@@ -14,6 +14,12 @@
 #include <stdlib.h> //For system()
 #include <time.h> //for time() (som for¯vrig er ant sekunder siden kl 00.00.00 1. januar 1970 GMT hvis du har time(0)
 
+#ifdef _WIN32
+    #define CLEAR_COMMAND "cls"
+#else
+    #define CLEAR_COMMAND "clear"
+#endif
+
 char cRute[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'}; //rutene
 int nPlayer = 0;
 int nGame_mode = 0;
@@ -59,8 +65,8 @@ void input(char cPlayer) //Tar input
 void tegn_brett() //Spillebrettet
 {
 	int nDummy = -3;
-	system("cls");
-	std::cout<<"Tic Tac Toe v.1.00 by Lord Sankra, 2003"<<std::endl<<std::endl;
+	system(CLEAR_COMMAND);
+	std::cout<<"Tic Tac Toe v.1.00 by Runar, 2003"<<std::endl<<std::endl;
 	for (int nX = 0; nX <= 6; nX++)
     {
         if (nX % 2 == 0)
@@ -281,12 +287,12 @@ void comp_player(char cPlayer)  //ai :) kan brukes med spiller 1 eller 2, X elle
 
 void welcome() //velkomstskjerm
 {
-	system("cls");
+	system(CLEAR_COMMAND);
 	
 	int nValg = 0;
 	char cValg[100];
 	
-	std::cout<<"Welcome to Tic Tac Toe v.1.00 by Lord Sankra, 2003"<<std::endl<<std::endl;
+	std::cout<<"Welcome to Tic Tac Toe v.1.00 by Runar, 2003"<<std::endl<<std::endl;
 	std::cout <<"\n1. 2 Player\n2. Easy Computer\n3. Medium Computer\n4. Hard Computer\n\nChoose game mode: ";
 	std::cin.getline (cValg,100);
 	nValg = atoi (cValg);
